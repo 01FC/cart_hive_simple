@@ -1,7 +1,6 @@
 import 'package:cart_hive/cart/bloc/cart_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hive/hive.dart';
 
 class CartPage extends StatefulWidget {
   CartPage({Key key}) : super(key: key);
@@ -23,6 +22,13 @@ class _CartPageState extends State<CartPage> {
           listener: (context, state) {
             if (state is ElementRemovedState) {
               // show snackbar
+              ScaffoldMessenger.of(context)
+                ..hideCurrentSnackBar()
+                ..showSnackBar(
+                  SnackBar(
+                    content: Text("Error"),
+                  ),
+                );
             }
           },
           builder: (context, state) {

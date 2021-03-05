@@ -24,10 +24,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     if (event is AddToCartEvent) {
       // guardar en la bd local
       // _cartBox.add(event.product);
-      var cartElements = List();
+      var cartElements = [];
       if (_cartBox.isNotEmpty) cartElements = _cartBox.get("bebidas");
       cartElements.add(event.product);
-      _cartBox.put("bebidas", cartElements);
+      await _cartBox.put("bebidas", cartElements);
       yield ElementAddedState();
     }
   }

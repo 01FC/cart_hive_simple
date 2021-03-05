@@ -4,7 +4,6 @@ import 'package:cart_hive/home/item_home.dart';
 import 'package:cart_hive/model/product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hive/hive.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
@@ -89,7 +88,7 @@ class _HomePageState extends State<HomePage> {
         child: BlocConsumer<HomeBloc, HomeState>(
           listener: (context, state) {
             if (state is ElementAddedState) {
-              Scaffold.of(context)
+              ScaffoldMessenger.of(context)
                 ..hideCurrentSnackBar()
                 ..showSnackBar(
                   SnackBar(
