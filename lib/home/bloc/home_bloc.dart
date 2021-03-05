@@ -1,19 +1,16 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:cart_hive/home/item_home.dart';
 import 'package:cart_hive/model/product.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
-import 'package:hive/hive.dart';
 
 part 'home_event.dart';
 part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  // referencia a la box previamente abierta (en el main)
-  Box _cartBox = Hive.box("Carrito");
+  // TODO:referencia a la box previamente abierta (en el main)
 
   HomeBloc() : super(HomeInitial());
 
@@ -22,13 +19,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     HomeEvent event,
   ) async* {
     if (event is AddToCartEvent) {
-      // guardar en la bd local
+      //TODO: guardar en la bd local
       // _cartBox.add(event.product);
-      var cartElements = [];
-      if (_cartBox.isNotEmpty) cartElements = _cartBox.get("bebidas");
-      cartElements.add(event.product);
-      await _cartBox.put("bebidas", cartElements);
-      yield ElementAddedState();
+
     }
   }
 }

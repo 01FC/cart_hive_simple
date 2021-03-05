@@ -74,7 +74,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _addProduct(Product prod) {
-    _homeBloc.add(AddToCartEvent(product: prod));
+    //TODO: add to bloc
   }
 
   @override
@@ -87,15 +87,7 @@ class _HomePageState extends State<HomePage> {
         },
         child: BlocConsumer<HomeBloc, HomeState>(
           listener: (context, state) {
-            if (state is ElementAddedState) {
-              ScaffoldMessenger.of(context)
-                ..hideCurrentSnackBar()
-                ..showSnackBar(
-                  SnackBar(
-                    content: Text("Agregado al carrito"),
-                  ),
-                );
-            }
+            //
           },
           builder: (context, state) {
             return CustomScrollView(

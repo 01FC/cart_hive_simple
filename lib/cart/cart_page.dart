@@ -22,13 +22,7 @@ class _CartPageState extends State<CartPage> {
           listener: (context, state) {
             if (state is ElementRemovedState) {
               // show snackbar
-              ScaffoldMessenger.of(context)
-                ..hideCurrentSnackBar()
-                ..showSnackBar(
-                  SnackBar(
-                    content: Text("Error"),
-                  ),
-                );
+
             }
           },
           builder: (context, state) {
@@ -40,9 +34,7 @@ class _CartPageState extends State<CartPage> {
                     key: Key("$index"),
                     onDismissed: (direction) {
                       if (direction == DismissDirection.startToEnd) {
-                        BlocProvider.of<CartBloc>(context).add(
-                          RemoveProductEvent(element: index),
-                        );
+                        //TODO:remove
                       }
                     },
                     background: Container(
